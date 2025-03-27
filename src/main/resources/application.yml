@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: aws-lambda-s3
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/lambda_s3_db?useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+api:
+  prefix: api/v1
+
+aws:
+  region: us-east-1
+  accessKeyId: test
+  secretAccessKey: test
+  endpoint: http://localhost:4566
