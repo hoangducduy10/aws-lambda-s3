@@ -35,8 +35,8 @@ public class FileServiceTest {
     private final String fileContent = "Hello Duy M10!";
 
     @Test
-    void testFetchAndSaveFile_Success() throws IOException {
-        when(s3Service.readFileFromS3(bucketName, fileName)).thenReturn(fileContent);
+    void fetchAndSaveFile_givenFileExists_whenFetching_thenFileIsSaved() throws IOException {
+        when(s3Service.readFile(bucketName, fileName)).thenReturn(fileContent);
 
         fileService.fetchAndSaveFile(bucketName, fileName);
 
@@ -47,8 +47,8 @@ public class FileServiceTest {
     }
 
     @Test
-    void testFetchAndSaveFile_Fail() throws IOException {
-        when(s3Service.readFileFromS3(bucketName, fileName)).thenThrow(new IOException("File not found!"));
+    void fetchAndSaveFile_givenFileNotExists_whenFetching_thenThrowIOException() throws IOException {
+        when(s3Service.readFile(bucketName, fileName)).thenThrow(new IOException("File not found!"));
 
         IOException thrown = assertThrows(IOException.class, () -> {
             fileService.fetchAndSaveFile(bucketName, fileName);

@@ -16,7 +16,7 @@ public class FileService implements IFileService{
 
     @Override
     public void fetchAndSaveFile(String bucketName, String fileName) throws IOException {
-        String content = s3Service.readFileFromS3(bucketName, fileName);
+        String content = s3Service.readFile(bucketName, fileName);
 
         FileEntity fileEntity = FileEntity.builder()
                 .fileName(fileName)

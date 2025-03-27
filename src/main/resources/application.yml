@@ -3,9 +3,9 @@ spring:
     name: aws-lambda-s3
 
   datasource:
-    url: jdbc:mysql://localhost:3306/lambda_s3_db?useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&serverTimezone=UTC
-    username: root
-    password: root
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true&autoReconnect=true&serverTimezone=UTC
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -15,11 +15,8 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
 
-api:
-  prefix: api/v1
-
 aws:
-  region: us-east-1
-  accessKeyId: test
-  secretAccessKey: test
-  endpoint: http://localhost:4566
+  region: ${AWS_DEFAULT_REGION}
+  accessKeyId: ${AWS_ACCESS_KEY_ID}
+  secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+  endpoint: ${AWS_ENDPOINT}
