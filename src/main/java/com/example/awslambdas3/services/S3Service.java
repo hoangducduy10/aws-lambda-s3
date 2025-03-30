@@ -38,24 +38,5 @@ public class S3Service implements IS3Service{
                 .collect(Collectors.joining("\n"));
     }
 
-    @Override
-    public void uploadFile(String bucketName, String fileName, String content) {
-        PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-                .bucket(bucketName)
-                .key(fileName)
-                .build();
-
-        s3Client.putObject(putObjectRequest, RequestBody.fromString(content));
-    }
-
-    @Override
-    public void deleteFile(String bucketName, String fileName) {
-        DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
-                .bucket(bucketName)
-                .key(fileName)
-                .build();
-
-        s3Client.deleteObject(deleteObjectRequest);
-    }
 
 }

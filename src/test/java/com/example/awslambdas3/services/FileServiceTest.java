@@ -23,7 +23,7 @@ public class FileServiceTest {
     private FileRepository fileRepository;
 
     @InjectMocks
-    private FileService fileService;
+    private FileStorageService fileService;
 
     @BeforeEach
     void setUp() {

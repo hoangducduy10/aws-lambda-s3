@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-public class FileService implements IFileService{
+public class FileStorageService implements IFileStorageService {
 
     private final IS3Service s3Service;
     private final FileRepository fileRepository;

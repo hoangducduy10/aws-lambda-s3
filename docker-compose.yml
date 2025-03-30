@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   localstack:
     container_name: localstack-main
@@ -9,7 +11,7 @@ services:
       AWS_ACCESS_KEY_ID: test
       AWS_SECRET_ACCESS_KEY: test
       DEBUG: ${DEBUG:-1}
-      SERVICES: s3,sqs,sns,logs,cloudwatch,xray,lambda,apigateway,events,secretsmanager
+      SERVICES: s3,sqs,sns,logs,cloudwatch,xray,lambda,events
       PERSISTENCE: 1
       LAMBDA_EXECUTOR: docker
     volumes:
@@ -21,11 +23,10 @@ services:
     container_name: db
     image: mysql:8.0.41
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
     volumes:
       - ./.data/mysql:/var/lib/mysql
-

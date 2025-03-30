@@ -23,6 +23,7 @@ public class AwsConfig {
     @Value("${aws.endpoint}")
     private String endpoint;
 
+
     @Bean
     public S3Client s3Client(){
         return S3Client.builder()
