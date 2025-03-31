@@ -1,6 +1,7 @@
 package com.example.awslambdas3.configurations;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -11,18 +12,17 @@ import software.amazon.awssdk.services.s3.S3Client;
 @Configuration
 public class AwsConfig {
 
-    @Value("${aws.region}")
+    @Value("${AWS_DEFAULT_REGION}")
     private String region;
 
-    @Value("${aws.accessKeyId}")
+    @Value("${AWS_ACCESS_KEY_ID}")
     private String accessKeyId;
 
-    @Value("${aws.secretAccessKey}")
+    @Value("${AWS_SECRET_ACCESS_KEY}")
     private String secretAccessKey;
 
-    @Value("${aws.endpoint}")
+    @Value("${AWS_ENDPOINT}")
     private String endpoint;
-
 
     @Bean
     public S3Client s3Client(){
